@@ -3,3 +3,5 @@
 #movies
 python-dotenv
 requests
+Pillow
+Matplotlib

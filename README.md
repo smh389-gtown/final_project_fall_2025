@@ -27,3 +27,11 @@ Navigate to the repo using the command line.
 ```sh
 cd ~/Desktop/final-project-env-fall-2025
 ```
+
+## Usage
+Example script:
+
+```sh
+python apps/movies.py
+
+```

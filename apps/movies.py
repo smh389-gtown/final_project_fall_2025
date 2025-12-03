@@ -2,6 +2,12 @@ import random
 import requests
 import os
 from dotenv import load_dotenv
+from PIL import Image
+from io import BytesIO
+import matplotlib.pyplot as plt
+
+
+
 
 load_dotenv() # loads environment variables from the ".env" file
 
@@ -24,4 +30,17 @@ movie_list = response.json()
 
 movie_list = movie_list["results"]
 
+
+poster_path = movie_list[movie_number]["poster_path"]
+full_url = f"https://image.tmdb.org/t/p/w500{poster_path}"
+
+response = requests.get(full_url)
+img = Image.open(BytesIO(response.content))
+
+plt.imshow(img)
+plt.axis("off")
+plt.show()
+
+
 print(movie_list)
+
