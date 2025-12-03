@@ -1,0 +1,5 @@
+# this is the requirements .txt file
+
+#movies
+python-dotenv
+requests
