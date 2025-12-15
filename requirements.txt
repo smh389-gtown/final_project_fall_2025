@@ -5,3 +5,18 @@ python-dotenv
 requests
 Pillow
 Matplotlib
+
+# this is the requirements .txt file
+#testing
+pytest
+
+#Others:
+pandas
+plotly
+
+#Web Application
+flask
+
+
+# server production
+#gunicorns
