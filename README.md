@@ -15,6 +15,15 @@ Activate the virtual environment
 ```sh
 conda activate final-project-env-fall-2025
 ```
+
+Navigate to project
+```sh
+cd ~Desktop\final_project_fall_2025
+OR
+cd C:"\Users\username\Desktop\final_project_fall_2025"
+```
+In second line, replace "username" with your username
+
 Install dependences:
 
 ```sh
@@ -22,11 +31,6 @@ pip install -r requirements.txt
 ```
 
 Navigate to the repo using the command line.
-
-
-```sh
-cd ~/Desktop/final-project-env-fall-2025
-```
 
 ## Usage
 Example script:
