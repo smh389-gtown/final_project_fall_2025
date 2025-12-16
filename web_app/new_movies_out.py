@@ -29,6 +29,7 @@ def get_now_playing(limit: int = 8):
             "title": m.get("title") or m.get("name") or "Untitled",
             "overview": (m.get("overview") or "No overview available.").strip(),
             "poster_url": poster_url or "https://via.placeholder.com/500x750?text=No+Poster",
+            "tmdb_url": f"https://www.themoviedb.org/movie/{m.get('id')}",
         })
 
     return movies

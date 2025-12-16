@@ -17,7 +17,12 @@
           >
 
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title">{{ movie.title }}</h5>
+            <h5 class="card-title">
+              <a href="{{ movie.tmdb_url }}" target="_blank" class="text-decoration-none link-danger">
+                {{ movie.title }}
+              </a>
+            </h5>
+
 
             <p class="card-text text-muted small">
               {{ movie.overview[:120] }}{% if movie.overview|length > 120 %}…{% endif %}
