@@ -1,0 +1,35 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "actor_form" %}
+
+{% block content %}
+<h1 class="mb-4 text-center">Guess the Movie!</h1>
+<p class="text-center mb-4">Guess the movie from the following actors:</p>
+
+{% if actors %}
+  <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3 justify-content-center mb-4">
+    {% for actor in actors %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-danger text-center">
+          {% if actor.profile_path %}
+            <img src="https://image.tmdb.org/t/p/w200{{ actor.profile_path }}" class="card-img-top" alt="{{ actor.name }}">
+          {% endif %}
+          <div class="card-body p-2">
+            <p class="card-text">{{ actor.name }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="text-muted text-center">No actors available for this movie.</p>
+{% endif %}
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <form action="{{ url_for('actor_game_routes.results') }}" method="POST" class="d-flex gap-2">
+      <input type="text" name="user_guess" class="form-control border-danger" placeholder="Enter your guess" required>
+      <button type="submit" class="btn btn-danger">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
