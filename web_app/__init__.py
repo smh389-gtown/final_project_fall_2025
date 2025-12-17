@@ -16,7 +16,9 @@ def create_app():
 
     # register blueprints
     app.register_blueprint(home_routes)
+    app.register_blueprint(game_bp, url_prefix="/game")
     app.register_blueprint(actor_game_routes)
+
     return app
 
 if __name__ == "__main__":
