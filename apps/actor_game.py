@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 load_dotenv()  # loads environment variables from the ".env" file
 
 def get_random_movie():
-    """Fetch a random movie and return its title and cast list (actors only)."""
     TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
     # Pick random page and movie

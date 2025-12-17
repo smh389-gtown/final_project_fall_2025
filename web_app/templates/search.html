@@ -1,90 +1,76 @@
-{% extends "bootstrap_5_layout.html" %}
+{% extends "bootstrap_5_layout.html" %} 
 {% set active_page = "game" %}
 
 {% block content %}
 
 <h1 class="mb-4">
-    <i class="bi-search"></i>
-    Movie Search Results
+    <i class="bi-search"></i> Movie Search
 </h1>
 
-<!-- SEARCH FORM -->
-<form method="GET" action="/movies/search" class="mb-4">
+<form method="GET" action="/search" class="mb-4">
     <div class="input-group">
         <input
             type="text"
             name="q"
             class="form-control"
-            placeholder="Search for a movie (e.g. Princess)"
-            value="{{ request.args.get('q', '') }}"
+            placeholder="Search for a movie by title"
+            value="{{ query }}"
             required
         >
         <button class="btn btn-danger" type="submit">
-            <i class="bi-search"></i> Search
+            Search
         </button>
     </div>
 </form>
 
-{% if movies %}
+{% if movies is not none %}
 
-<p class="text-muted">
-    Showing {{ movies|length }} result{{ movies|length != 1 and 's' or '' }}
-</p>
+    {% if movies %}
+        <hr>
+        <h4 class="mb-3">Results</h4>
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for movie in movies %}
+            <div class="col">
+                <div class="card h-100">
 
-    {% for movie in movies %}
-    <div class="col">
-        <div class="card h-100 shadow-sm">
+                    {% if movie.poster_url %}
+                        <img src="{{ movie.poster_url }}" class="card-img-top" alt="{{ movie.title }}">
+                    {% endif %}
 
-            {% if movie.poster_url %}
-            <img
-                src="{{ movie.poster_url }}"
-                class="card-img-top"
-                alt="{{ movie.title }} poster"
-            >
-            {% else %}
-            <div class="text-center p-5 text-muted">
-                <i class="bi-film" style="font-size:3rem;"></i>
-                <p>No Poster</p>
-            </div>
-            {% endif %}
+                    <div class="card-body">
+                        <!-- Title as link to TMDB with danger color -->
+                        <h5>
+                            <a href="https://www.themoviedb.org/movie/{{ movie.id }}" 
+                               target="_blank" 
+                               class="text-decoration-none text-danger">
+                                {{ movie.title }}
+                            </a>
+                        </h5>
 
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title">{{ movie.title }}</h5>
+                        {% if movie.release_date %}
+                            <p class="small text-muted">
+                                {{ movie.release_date | datetimeformat }}
+                            </p>
+                        {% endif %}
 
-                {% if movie.release_date %}
-                <p class="card-text text-muted mb-1">
-                    {{ movie.release_date }}
-                </p>
-                {% endif %}
+                        <p class="small">{{ movie.overview | truncate(120) }}</p>
 
-                <p class="card-text small flex-grow-1">
-                    {{ movie.overview | truncate(150) }}
-                </p>
+                        <span class="badge bg-warning text-dark">
+                            ⭐ {{ movie.rating }}
+                        </span>
+                    </div>
 
-                <div class="mt-2">
-                    <span class="badge bg-warning text-dark">
-                        ⭐ {{ movie.rating }}
-                    </span>
-                    <span class="text-muted small">
-                        ({{ movie.vote_count }} votes)
-                    </span>
                 </div>
             </div>
-
+        {% endfor %}
         </div>
-    </div>
-    {% endfor %}
 
-</div>
-
-{% else %}
-
-<div class="alert alert-info">
-    <i class="bi-info-circle"></i>
-    No movies found. Try a different search term.
-</div>
+    {% else %}
+        <div class="alert alert-info">
+            No results found.
+        </div>
+    {% endif %}
 
 {% endif %}
 

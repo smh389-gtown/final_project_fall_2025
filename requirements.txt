@@ -5,6 +5,8 @@ python-dotenv
 requests
 Pillow
 Matplotlib
+datetime
+time
 
 # this is the requirements .txt file
 #testing
