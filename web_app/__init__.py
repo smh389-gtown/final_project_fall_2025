@@ -5,6 +5,7 @@ from flask import Flask
 from web_app.routes.game_routes import game_bp
 from web_app.routes.home_routes import home_routes
 from web_app.routes.actor_game_routes import actor_game_routes
+from web_app.routes.search_routes import search_routes
 
 load_dotenv()
 
@@ -18,6 +19,7 @@ def create_app():
     app.register_blueprint(home_routes)
     app.register_blueprint(game_bp, url_prefix="/game")
     app.register_blueprint(actor_game_routes)
+    app.register_blueprint(search_routes)
 
     return app
 
