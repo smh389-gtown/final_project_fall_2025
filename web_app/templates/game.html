@@ -65,7 +65,7 @@
 
     {% if result.is_correct %}
       <div class="alert alert-success text-center" role="alert">
-        ✅ Correct! The higher-rated movie was <strong>{{ result.correct }}</strong>.
+        Correct! The higher-rated movie was <strong>{{ result.correct }}</strong>.
         <div class="mt-2">
           <span class="delta-badge bg-dark text-white">
             Δ {{ "%.1f"|format(diff) }}
@@ -74,7 +74,7 @@
       </div>
     {% else %}
       <div class="alert alert-danger text-center" role="alert">
-        ❌ Not quite.
+        Not quite.
         {% if result.correct %}
           The higher-rated movie was <strong>{{ result.correct }}</strong>.
         {% else %}
