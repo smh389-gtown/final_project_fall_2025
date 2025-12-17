@@ -2,20 +2,43 @@ import importlib
 import random
 
 
+def _payload_with_movies():
+    return {
+        "total_pages": 1,
+        "results": [
+            {
+                "id": 1,
+                "title": "A",
+                "vote_count": 12000,
+                "vote_average": 7.1,
+                "original_language": "en",
+                "poster_path": "/a.jpg",
+            },
+            {
+                "id": 2,
+                "title": "B",
+                "vote_count": 15000,
+                "vote_average": 7.3,
+                "original_language": "en",
+                "poster_path": "/b.jpg",
+            },
+            {
+                "id": 3,
+                "title": "C",
+                "vote_count": 20000,
+                "vote_average": 7.8,
+                "original_language": "en",
+                "poster_path": "/c.jpg",
+            },
+        ],
+    }
+
+
 def test_get_two_movies_random_page_returns_two_movies(set_tmdb_key, mock_get, monkeypatch):
-    # deterministic
     monkeypatch.setattr(random, "randint", lambda a, b: a)
     monkeypatch.setattr(random, "sample", lambda seq, k: list(seq)[:k])
 
-    payload = {
-        "total_pages": 1,
-        "results": [
-            {"id": 1, "title": "A", "vote_count": 12000, "original_language": "en", "poster_path": "/a.jpg"},
-            {"id": 2, "title": "B", "vote_count": 15000, "original_language": "en", "poster_path": "/b.jpg"},
-            {"id": 3, "title": "C", "vote_count": 20000, "original_language": "en", "poster_path": "/c.jpg"},
-        ],
-    }
-    mock_get(payload)
+    mock_get(_payload_with_movies())
 
     import apps.guessing_game as gg
     gg = importlib.reload(gg)
@@ -27,7 +50,8 @@ def test_get_two_movies_random_page_returns_two_movies(set_tmdb_key, mock_get, m
 
 
 def test_poster_url_returns_none_if_missing(set_tmdb_key, mock_get):
-    mock_get({"total_pages": 1, "results": []})
+    # IMPORTANT: module import must succeed, so give it valid movies
+    mock_get(_payload_with_movies())
 
     import apps.guessing_game as gg
     gg = importlib.reload(gg)

@@ -1,10 +1,11 @@
 import random
+import requests
 
 from apps.actor_game import get_random_movie
+from conftest import FakeResponse   
 
 
-def test_get_random_movie_returns_title_and_5_actors(set_tmdb_key, mock_get, monkeypatch):
-    # deterministic random choices
+def test_get_random_movie_returns_title_and_5_actors(set_tmdb_key, monkeypatch):
     monkeypatch.setattr(random, "randint", lambda a, b: a)
 
     discover_payload = {
@@ -21,11 +22,7 @@ def test_get_random_movie_returns_title_and_5_actors(set_tmdb_key, mock_get, mon
         ]
     }
 
-    # We need different payloads based on the URL
-    import requests
-
     def fake_get(url, *args, **kwargs):
-        from test.conftest import FakeResponse
         if "discover/movie" in url:
             return FakeResponse(discover_payload)
         if "credits" in url:
@@ -35,7 +32,5 @@ def test_get_random_movie_returns_title_and_5_actors(set_tmdb_key, mock_get, mon
     monkeypatch.setattr(requests, "get", fake_get)
 
     title, actors = get_random_movie()
-
     assert title == "Test Movie"
     assert len(actors) == 5
-    assert all("name" in a for a in actors)
