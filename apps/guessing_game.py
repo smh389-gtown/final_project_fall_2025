@@ -59,22 +59,27 @@ def get_two_movies_random_page(page_min=1, page_max=15, min_votes=10_000, max_tr
 
     raise RuntimeError("Couldn’t find a page with 2+ movies. Try lowering min_votes or expanding page range.")
 
-(a, b), page = get_two_movies_random_page(page_min=1, page_max=15, min_votes=10_000)
+if __name__ == "__main__":
+    (a, b), page = get_two_movies_random_page(page_min=1, page_max=15, min_votes=10_000)
 
-movie_a = {
-    "title": a["title"],
-    "rating": a["vote_average"],
-    "votes": a["vote_count"],
-    "popularity": a["popularity"],
-    "page_url": movie_page_url(a),
-    "poster_url": poster_url(a),
-}
-movie_b = {
-    "title": b["title"],
-    "rating": b["vote_average"],
-    "votes": b["vote_count"],
-    "popularity": b["popularity"],
-    "page_url": movie_page_url(b),
-    "poster_url": poster_url(b),
-}
+    movie_a = {
+        "title": a["title"],
+        "rating": a["vote_average"],
+        "votes": a["vote_count"],
+        "popularity": a["popularity"],
+        "page_url": movie_page_url(a),
+        "poster_url": poster_url(a),
+    }
+    movie_b = {
+        "title": b["title"],
+        "rating": b["vote_average"],
+        "votes": b["vote_count"],
+        "popularity": b["popularity"],
+        "page_url": movie_page_url(b),
+        "poster_url": poster_url(b),
+    }
+
+    print(movie_a)
+    print(movie_b)
+
 
