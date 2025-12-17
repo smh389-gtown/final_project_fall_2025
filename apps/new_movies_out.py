@@ -13,6 +13,7 @@ def get_now_playing(limit: int = 8):
         "api_key": TMDB_API_KEY,
         "page": 1,
         "language": "en-US",   # translate title/overview to English when available
+        "region": "US",
     }
 
     resp = requests.get(TMDB_NOW_PLAYING_URL, params=params, timeout=20)
