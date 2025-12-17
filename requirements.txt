@@ -20,4 +20,4 @@ flask
 
 
 # server production
-gunicorns
+gunicorn
