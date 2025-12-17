@@ -1,11 +1,20 @@
+import os
 import random
 import requests
 
 from apps.actor_game import get_random_movie
-from conftest import FakeResponse   
 
 
-def test_get_random_movie_returns_title_and_5_actors(set_tmdb_key, monkeypatch):
+class FakeResponse:
+    def __init__(self, payload):
+        self._payload = payload
+
+    def json(self):
+        return self._payload
+
+
+def test_get_random_movie_returns_title_and_5_actors(monkeypatch):
+    os.environ["TMDB_API_KEY"] = "DUMMY"
     monkeypatch.setattr(random, "randint", lambda a, b: a)
 
     discover_payload = {
