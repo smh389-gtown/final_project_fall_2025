@@ -40,24 +40,24 @@ python apps/movies.py
 
 ```
 ## Secret Credentials
-# this is the ".env" file...
+### this is the ".env" file...
 
-# replace "demo" with your premium key:
+### replace "demo" with your premium key:
 TMDB_API_KEY="demo"
 
-# also tell flask where web app is located
+### also tell flask where web app is located
 FLASK_APP=web_app
 
 ## Web App
 
-# if we have the FLASK_APP=web_app env var in the ".env" file:
+if we have the FLASK_APP=web_app env var in the ".env" file:
 flask run
 
-# Mac OS:
+### Mac OS:
 FLASK_APP=web_app flask run
 
-# Windows OS:
-# ... if `export` doesn't work for you, try `set` instead
-# ... or set FLASK_APP variable via ".env" file
+### Windows OS:
+... if `export` doesn't work for you, try `set` instead
+... or set FLASK_APP variable via ".env" file
 export FLASK_APP=web_app
 flask run
