@@ -12,10 +12,12 @@ load_dotenv()
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 BASE = "https://api.themoviedb.org/3"
 
+#these are useful for storing
 TMDB_MOVIE_URL = "https://www.themoviedb.org/movie/"
 TMDB_POSTER_BASE = "https://image.tmdb.org/t/p/"
 PLACEHOLDER_POSTER = None 
 
+# these two functions help with saving the link back to TMDB and the poster image
 def movie_page_url(movie):
     return f"{TMDB_MOVIE_URL}{movie['id']}"
 
@@ -25,6 +27,9 @@ def poster_url(movie, size="w500"):
         return PLACEHOLDER_POSTER
     return f"{TMDB_POSTER_BASE}{size}{path}"
 
+
+# main function that grabs the two seperate movies at random and parameters for popularity
+# parameters can be changed to make game harder in the future
 def discover_movies_page(page: int, *, min_votes: int = 10_000):
     params = {
         "api_key": TMDB_API_KEY,

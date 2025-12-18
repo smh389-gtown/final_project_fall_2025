@@ -2,12 +2,19 @@ import os
 import requests
 from dotenv import load_dotenv
 
+
+
+# original code was done by me and optimized using AI
+# here is colab notebook with starting place: https://colab.research.google.com/drive/1jcgstaJJa0opNqIjGigIN8tB9uljra9v
+#https://chatgpt.com/c/693f84f0-bbe8-8328-af92-9057431077e8
+
 load_dotenv()
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
 TMDB_NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing"
 TMDB_POSTER_BASE = "https://image.tmdb.org/t/p/w500"
 
+# upcoming movies main funciton
 def get_now_playing(limit: int = 8):
     params = {
         "api_key": TMDB_API_KEY,
@@ -20,7 +27,7 @@ def get_now_playing(limit: int = 8):
     resp.raise_for_status()
 
     results = resp.json().get("results", [])
-
+    # storing the results for display later
     movies = []
     for m in results[:limit]:
         poster_path = m.get("poster_path")
