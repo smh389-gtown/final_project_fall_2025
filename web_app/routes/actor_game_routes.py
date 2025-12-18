@@ -3,6 +3,9 @@ from apps.actor_game import get_random_movie
 
 actor_game_routes = Blueprint("actor_game_routes", __name__)
 
+# Since some of this rendered front end, that part was also created with ChatGPT assistance
+# https://chatgpt.com/c/6941f83a-2be8-832e-bac8-f3cfc6945287
+
 
 @actor_game_routes.route("/actor/form")
 def form():

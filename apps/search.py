@@ -4,6 +4,11 @@ from dotenv import load_dotenv
 from datetime import datetime
 import time
 
+# Based code off of what I know about searching in sql with help of ChatGPT
+# not at all a complex search algorthm
+# below is link of my conversation with ChatGPT working on creating this algorithm and debugging along with front end changes
+# https://chatgpt.com/c/6942ecfb-21c8-832d-97ff-64cac38cbe5b
+
 def datetimeformat(value):
     """Convert 'YYYY-MM-DD' to 'Jan 01, 2020' style."""
     if not value:
