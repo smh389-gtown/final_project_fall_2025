@@ -4,6 +4,9 @@ from pathlib import Path
 
 import pytest
 
+# Below is the link to my chat with ChatGPT 
+# https://chatgpt.com/c/6943047c-d430-8333-b54b-56ac6f578300
+
 
 # Make sure `apps/` imports work on GitHub Actions / CI
 ROOT = Path(__file__).resolve().parents[1]

@@ -1,3 +1,6 @@
+# Below is the link to my chat with ChatGPT 
+# https://chatgpt.com/c/6943047c-d430-8333-b54b-56ac6f578300
+
 from apps.new_movies_out import get_now_playing
 
 

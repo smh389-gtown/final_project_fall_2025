@@ -3,7 +3,8 @@ import random
 import requests
 
 from apps.actor_game import get_random_movie
-
+# Below is the link to my chat with ChatGPT 
+# https://chatgpt.com/c/6943047c-d430-8333-b54b-56ac6f578300
 
 class FakeResponse:
     def __init__(self, payload):
