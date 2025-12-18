@@ -3,6 +3,10 @@ import random
 import requests
 from dotenv import load_dotenv
 
+
+
+# Used AI for help after trying on my own since this is a complicated game, then went back and made adjustments myself
+# Chat convo: https://chatgpt.com/c/6941d16e-4648-8328-b393-1ceba6c0bfde
 load_dotenv()
 
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
@@ -10,7 +14,7 @@ BASE = "https://api.themoviedb.org/3"
 
 TMDB_MOVIE_URL = "https://www.themoviedb.org/movie/"
 TMDB_POSTER_BASE = "https://image.tmdb.org/t/p/"
-PLACEHOLDER_POSTER = None  # or "/static/placeholder.jpg" in Flask
+PLACEHOLDER_POSTER = None 
 
 def movie_page_url(movie):
     return f"{TMDB_MOVIE_URL}{movie['id']}"

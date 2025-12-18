@@ -1,6 +1,8 @@
 import importlib
 import random
 
+# Below is the link to my chat with ChatGPT 
+# https://chatgpt.com/c/6943047c-d430-8333-b54b-56ac6f578300
 
 def _payload():
     return {

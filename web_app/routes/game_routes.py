@@ -1,6 +1,12 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from apps.guessing_game import get_two_movies_random_page, movie_page_url, poster_url
 
+
+# I used additional help from AI here to understand how to route with this higher complexity
+# Here is the chat link: https://chatgpt.com/c/6941d16e-4648-8328-b393-1ceba6c0bfde
+
+
+
 game_bp = Blueprint("game", __name__)
 
 def build_movie(movie):
