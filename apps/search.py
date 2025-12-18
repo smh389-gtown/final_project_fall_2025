@@ -9,6 +9,7 @@ import time
 # below is link of my conversation with ChatGPT working on creating this algorithm and debugging along with front end changes
 # https://chatgpt.com/c/6942ecfb-21c8-832d-97ff-64cac38cbe5b
 
+# converts date given into a format that is more user friendly
 def datetimeformat(value):
     """Convert 'YYYY-MM-DD' to 'Jan 01, 2020' style."""
     if not value:
@@ -24,7 +25,7 @@ TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 BASE_URL = "https://api.themoviedb.org/3/discover/movie"
 POSTER_BASE_URL = "https://image.tmdb.org/t/p/w500"
 
-
+# Looks at user input from max of 50 discovery pages and pulls information about it to use later
 def tmdb_like_search_movies(phrase, max_pages=50):
     matches = []
     seen_ids = set()

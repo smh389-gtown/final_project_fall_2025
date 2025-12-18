@@ -31,6 +31,7 @@ def get_random_movie():
     credits_response = requests.get(credits_url)
     credits = credits_response.json()["cast"]
 
+    # Once it find a movie and finds its credits, it pulls information from the first 5 actors
     actor_list = [
         {"name": actor["name"], "profile_path": actor["profile_path"]}
         for actor in credits
@@ -39,7 +40,7 @@ def get_random_movie():
 
     return movie_title, actor_list
 
-
+# Takes user input and says whether it is correct or not
 def play_movie_guess_game(movie_title, actor_list):
     print("Guess the movie based on the actors!")
 
